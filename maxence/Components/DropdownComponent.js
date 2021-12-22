@@ -10,39 +10,46 @@ const selectionMode = [
   ];
 
 
-const DropdownComponent = () => {
+const DropdownComponent = (overrideProps) => {
     const [value, setValue] = useState(null);
     const [isFocus, setIsFocus] = useState(false);
-    
+    const props = {
+      data:'data',
+      maxHeight:150,
+      labelField:"label",
+      valueField:"value",
+      placeholder:"select",
+      ...overrideProps,
+    }
     return (
       <View>
         <Dropdown
-          style={styles.dropdown}
-          data={selectionMode}
-          maxHeight={150}
-          labelField="label"
-          valueField="value"
-          placeholder="Mode de sélection"
           value={value}
-          onFocus={() => setIsFocus(true)}
+          onFocu={() => setIsFocus(true)}
           onBlur={() => setIsFocus(false)}
           onChange={item => {
             setValue(item.value);
             setIsFocus(false);
           }}
+          {...props}
         />
       </View>
     );
   };
 
-  const styles = StyleSheet.create({
-    dropdown: {
-        marginTop: '5%',
-        marginLeft: '10%',
-        marginRight: '10%',
-        paddingLeft: '5%',
-        borderWidth: 1
-      }
-    });
-
   export default DropdownComponent;
+
+
+  /*
+  style:{styles.dropdown},
+      data:{selectionMode},
+      maxHeight:{150},
+      labelField:"label",
+      valueField:"value",
+      placeholder:"Mode de sélection",
+      value:{value},
+      onFocus:{() => setIsFocus(true)},
+      onBlur:{() => setIsFocus(false)},
+      onChange:{item => {
+        setValue(item.value);
+        setIsFocus(false);*/
