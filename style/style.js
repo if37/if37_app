@@ -17,5 +17,9 @@ export const images = {
     camera  : require('../assets/home_icons/photo.png'),
     help : require('../assets/home_icons/help.png'),
     openFile : require('../assets/home_icons/files.png'),
-    parameter : require('../assets/home_icons/params.png')
+    parameter : require('../assets/home_icons/params.png'),
+    retake : require('../assets/camera-icons/retake.png'),
+    save : require('../assets/camera-icons/save.png'),
+    flip : require('../assets/camera-icons/cameraFlip.png'),
+    circle : require('../assets/camera-icons/circleCamera.png')
 }
