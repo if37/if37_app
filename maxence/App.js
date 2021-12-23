@@ -49,6 +49,56 @@ export default function App() {
     setModifiedText(<Text style={{fontWeight: 'bold'}}>{subtext}</Text>);
   }
 
+  const italify = () => {
+    let subtext = "";
+    if (start > 0) {
+      if (end < text.length) {
+        if (text != "") {
+          setPreText(text.substring(0, start));
+          setPostText(text.substring(end, text.length));
+          subtext = text.substring(start, end);
+        }
+      }
+      else {
+        setPostText("");
+        setPreText(text.substring(0, start));
+        subtext = text.substring(start, end);
+      }
+      setPreText(text.substring(0, start));
+    }
+    else {
+      setPreText("");
+      setPostText(text.substring(end, text.length));
+      subtext = text.substring(start, end);
+    }
+    setModifiedText(<Text style={{fontStyle: 'italic'}}>{subtext}</Text>);
+  }
+
+  const underline = () => {
+    let subtext = "";
+    if (start > 0) {
+      if (end < text.length) {
+        if (text != "") {
+          setPreText(text.substring(0, start));
+          setPostText(text.substring(end, text.length));
+          subtext = text.substring(start, end);
+        }
+      }
+      else {
+        setPostText("");
+        setPreText(text.substring(0, start));
+        subtext = text.substring(start, end);
+      }
+      setPreText(text.substring(0, start));
+    }
+    else {
+      setPreText("");
+      setPostText(text.substring(end, text.length));
+      subtext = text.substring(start, end);
+    }
+    setModifiedText(<Text style={{textDecorationLine: 'underline'}}>{subtext}</Text>);
+  }
+
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.button}>
@@ -69,10 +119,16 @@ export default function App() {
         >
           <Text style={styles.boldBtn}>B</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.editorbtn]}>
+        <TouchableOpacity 
+        style={[styles.editorbtn]}
+        onPress={italify}
+        >
           <Text style={styles.italicBtn}>I</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.editorbtn]}>
+        <TouchableOpacity 
+        style={[styles.editorbtn]}
+        onPress={underline}
+        >
           <Text style={styles.underlineBtn}>U</Text>
         </TouchableOpacity>
         <TouchableOpacity style={[styles.editorbtn]}>
