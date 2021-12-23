@@ -2,6 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Button, TouchableOpacity, Image,  TextInput} from 'react-native';
 import DropdownComponent from './Components/DropdownComponent';
+import ColorPicker from 'react-native-wheel-color-picker'
+import { borderBottomColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 export default function App() {
 
@@ -22,7 +24,18 @@ export default function App() {
   const [postText, setPostText] = useState("");
 
   //selected substring modified
-  const [modifiedText, setModifiedText] = useState(""); 
+  const [modifiedText, setModifiedText] = useState("");
+
+  // boolean to display or not the color wheel
+  const [displayColorPicker, setDisplayColorPicker] = useState(false);
+
+  const [displayColorPicker2, setDisplayColorPicker2] = useState(false);
+
+  // the chosen color for the font
+  const [color, setColor] = useState("#000");
+
+  // the chosen color for highlight
+  const [color2, setColor2] = useState("#000");
 
   const boldify = () => {
     let subtext = "";
@@ -99,6 +112,56 @@ export default function App() {
     setModifiedText(<Text style={{textDecorationLine: 'underline'}}>{subtext}</Text>);
   }
 
+  const changeFontColor = () => {
+    let subtext = "";
+    if (start > 0) {
+      if (end < text.length) {
+        if (text != "") {
+          setPreText(text.substring(0, start));
+          setPostText(text.substring(end, text.length));
+          subtext = text.substring(start, end);
+        }
+      }
+      else {
+        setPostText("");
+        setPreText(text.substring(0, start));
+        subtext = text.substring(start, end);
+      }
+      setPreText(text.substring(0, start));
+    }
+    else {
+      setPreText("");
+      setPostText(text.substring(end, text.length));
+      subtext = text.substring(start, end);
+    }
+    setModifiedText(<Text style={{color: color}}>{subtext}</Text>);
+  }
+
+  const highlight = () => {
+    let subtext = "";
+    if (start > 0) {
+      if (end < text.length) {
+        if (text != "") {
+          setPreText(text.substring(0, start));
+          setPostText(text.substring(end, text.length));
+          subtext = text.substring(start, end);
+        }
+      }
+      else {
+        setPostText("");
+        setPreText(text.substring(0, start));
+        subtext = text.substring(start, end);
+      }
+      setPreText(text.substring(0, start));
+    }
+    else {
+      setPreText("");
+      setPostText(text.substring(end, text.length));
+      subtext = text.substring(start, end);
+    }
+    setModifiedText(<Text style={{backgroundColor: color2}}>{subtext}</Text>);
+  }
+
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.button}>
@@ -120,22 +183,31 @@ export default function App() {
           <Text style={styles.boldBtn}>B</Text>
         </TouchableOpacity>
         <TouchableOpacity 
-        style={[styles.editorbtn]}
+        style={styles.editorbtn}
         onPress={italify}
         >
           <Text style={styles.italicBtn}>I</Text>
         </TouchableOpacity>
         <TouchableOpacity 
-        style={[styles.editorbtn]}
+        style={styles.editorbtn}
         onPress={underline}
         >
           <Text style={styles.underlineBtn}>U</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.editorbtn]}>
-          <Text style={styles.colorBtn}>A</Text>
+        <TouchableOpacity 
+        style={styles.editorbtn}
+        onPress={() => {
+          setDisplayColorPicker(!displayColorPicker);
+        }}
+        >
+          <Text style={[styles.colorBtn, , {borderBottomColor: color}]}>A</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.editorbtn]}>
-          <Image style={styles.highlightBtn} source={require('./assets/paint-bucket.png')}></Image>
+        <TouchableOpacity
+        style={[styles.editorbtn]}
+        onPress={() => {
+          setDisplayColorPicker2(!displayColorPicker2);
+        }}>
+          <Image style={[styles.highlightBtn, {tintColor: color2}]} source={require('./assets/paint-bucket.png')}></Image>
         </TouchableOpacity>
         <TouchableOpacity style={{flex: 1}}>
           <DropdownComponent
@@ -161,6 +233,24 @@ export default function App() {
       {modifiedText}
       {postText}
       </TextInput>
+      {displayColorPicker ?
+      <ColorPicker
+      discrete={true}
+      thumbSize={30}
+      onColorChangeComplete={(color) => {
+        setColor(color);
+        changeFontColor();
+      }}
+      ></ColorPicker> : null}
+      {displayColorPicker2 ?
+      <ColorPicker
+      discrete={true}
+      thumbSize={30}
+      onColorChangeComplete={(color) => {
+        setColor2(color);
+        highlight();
+      }}
+      ></ColorPicker> : null}
       <StatusBar style="auto"/>
     </View>
   );
@@ -253,8 +343,7 @@ container: {
   highlightBtn: {
     width: '50%',
     height: '50%',
-    resizeMode: 'contain',
-    tintColor: 'black'
+    resizeMode: 'contain'
   },
 
   textInput: {
