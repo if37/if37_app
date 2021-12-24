@@ -2,10 +2,21 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import {StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native'
 import {images, colors, fonts} from "../style/style"
+import {openDocumentFile} from '../helper/fileManagement'
 const HomeBtn = ({img,text}) => {
     const navigation = useNavigation()
     const navPressHandler = () => {
-        navigation.navigate(img)
+        
+        switch(img){
+            case 'openFile' :
+                openDocumentFile()
+            break;
+            default :
+                navigation.navigate(img)
+            break;
+        }
+        
+        
     }
     return (
         <TouchableOpacity style={styles.fnBtn} onPress={navPressHandler}>

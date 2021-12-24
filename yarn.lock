@@ -1786,6 +1786,11 @@ balanced-match@^1.0.0:
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
   integrity sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==
 
+base-64@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/base-64/-/base-64-0.1.0.tgz#780a99c84e7d600260361511c4877613bf24f6bb"
+  integrity sha1-eAqZyE59YAJgNhURxId2E78k9rs=
+
 base64-js@^1.1.2, base64-js@^1.2.3, base64-js@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.5.1.tgz#1b1b440160a5bf7ad40b650f095963481903930a"
@@ -2488,6 +2493,14 @@ expo-constants@~13.0.0:
   integrity sha512-DwElzs1k6KljlZln/X2O9b5K4bXlDk8nzF5nzSLgI+Ibg/xUoIL5QKM41Y9RDJfTzlDlV7nmeS/Xar+nP5KjMA==
   dependencies:
     "@expo/config" "^6.0.6"
+    uuid "^3.3.2"
+
+expo-document-picker@~10.1.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/expo-document-picker/-/expo-document-picker-10.1.0.tgz#c4ade71241c1dfb42e62dd8715e6ee4e956d6da9"
+  integrity sha512-zt4zGHii4efanElPeK0uJ8yAgO4S5gkKrplxr7DkfDK97LrJBqYJodE52ZCj967nVGhyXtfMi5dKDY5FG+QXdA==
+  dependencies:
+    "@expo/config-plugins" "^4.0.2"
     uuid "^3.3.2"
 
 expo-error-recovery@~3.0.4:
@@ -4455,6 +4468,21 @@ react-native-codegen@^0.0.6:
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
 
+react-native-document-picker@^7.1.2:
+  version "7.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-document-picker/-/react-native-document-picker-7.1.2.tgz#99c11a166c65f0fc4184f14067b7ea7a088252ed"
+  integrity sha512-9lVkvv37H2axi69t7IWhDBEEqF/sLXoIS0v3ROCgpcVRY0dyo+XZO5nBGUZtoBnqxiYBEoXDfWtCBmCU8h0/1Q==
+  dependencies:
+    invariant "^2.2.4"
+
+react-native-fs@^2.18.0:
+  version "2.18.0"
+  resolved "https://registry.yarnpkg.com/react-native-fs/-/react-native-fs-2.18.0.tgz#987b99cc90518ef26663a8d60e62104694b41c21"
+  integrity sha512-9iQhkUNnN2JNED0in06JwZy88YEVyIGKWz4KLlQYxa5Y2U0U2AZh9FUHtA04oWj+xt2LlHh0LFPCzhmNsAsUDg==
+  dependencies:
+    base-64 "^0.1.0"
+    utf8 "^3.0.0"
+
 react-native-safe-area-context@3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-3.3.2.tgz#9549a2ce580f2374edb05e49d661258d1b8bcaed"
@@ -5341,6 +5369,11 @@ use@^3.1.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
+
+utf8@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/utf8/-/utf8-3.0.0.tgz#f052eed1364d696e769ef058b183df88c87f69d1"
+  integrity sha512-E8VjFIQ/TyQgp+TZfS6l8yp/xWppSAHzidGiRrqe4bK4XP9pTRyKFgGJpO3SN7zdX4DeomTrwaseCHovfpFcqQ==
 
 util-deprecate@~1.0.1:
   version "1.0.2"
