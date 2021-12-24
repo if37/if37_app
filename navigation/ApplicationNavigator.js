@@ -25,10 +25,10 @@ function ApplicationNavigator() {
                     name="photo preview"
                     component={PhotoPreview}
                 />
-                <Stack.Screen 
+                {/* <Stack.Screen 
                     name="openFile"
                     component={TextDetection}
-                />
+                /> */}
             </Stack.Navigator>
         </NavigationContainer>
     )
