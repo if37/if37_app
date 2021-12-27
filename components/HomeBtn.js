@@ -5,18 +5,16 @@ import {images, colors, fonts} from "../style/style"
 import {openDocumentFile} from '../helper/fileManagement'
 const HomeBtn = ({img,text}) => {
     const navigation = useNavigation()
-    const navPressHandler = () => {
-        
+    const navPressHandler = async () => { 
         switch(img){
             case 'openFile' :
-                openDocumentFile()
+                const uri = await openDocumentFile()
+                navigation.navigate('fsView', {uri: uri})
             break;
             default :
                 navigation.navigate(img)
             break;
-        }
-        
-        
+        }   
     }
     return (
         <TouchableOpacity style={styles.fnBtn} onPress={navPressHandler}>
