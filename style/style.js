@@ -3,7 +3,8 @@ export const colors = {
     colorGreyLight: "#E1E1E1",
     colorGreyDark: "#D3D3D3",
     textColorDark : "#000",
-    textColorLight : "#fff"
+    textColorLight : "#fff",
+    textColorHighlight : "#3f3b3b"
 }
 
 export const fonts = {
