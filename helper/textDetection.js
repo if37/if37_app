@@ -4,7 +4,7 @@ const config = {
     apiKey :  "AIzaSyA1uIaO7XMHMyYCiuEaLwEIuIQWnOb21nw",
 }
 
-const callGoogleVIsionApi = async (imageUrl) => {
+const callGoogleVIsionApi = async (base64) => {
 // Convert the image data to a Buffer and base64 encode it.
 
     // var imageFile = fs.readFileSync('/path/to/file');

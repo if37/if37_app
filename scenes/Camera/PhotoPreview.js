@@ -25,7 +25,8 @@ function PhotoPreview({route}) {
             }
         }
         alert("Image Saved")
-        navigation.popToTop();
+        navigation.navigate('fsView', {uri:photoUri});
+        //navigation.popToTop()
       } catch (error) {
           console.log(error)
       }
