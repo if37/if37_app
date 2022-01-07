@@ -9,7 +9,9 @@ const HomeBtn = ({img,text}) => {
         switch(img){
             case 'openFile' :
                 const uri = await openDocumentFile()
-                navigation.navigate('fsView', {uri: uri})
+                if(uri){
+                    navigation.navigate('fsView', {uri: uri})
+                }
             break;
             default :
                 navigation.navigate(img)

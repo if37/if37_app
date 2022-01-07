@@ -2,6 +2,7 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '../scenes/Home/Home'
+import HelpScreen from '../scenes/HelpScreen/HelpScreen'
 import CameraHandler from '../scenes/Camera/Camera';
 import PhotoPreview from '../scenes/Camera/PhotoPreview';
 //import TextDetection from '../scenes/TextDetection/TextDetection';
@@ -29,6 +30,10 @@ function ApplicationNavigator() {
                 <Stack.Screen 
                     name="fsView"
                     component={FsView}
+                />
+                <Stack.Screen 
+                    name="help"
+                    component={HelpScreen}
                 />
             </Stack.Navigator>
         </NavigationContainer>

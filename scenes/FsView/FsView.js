@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from 'react'
 import * as FileSystem from 'expo-file-system'
-import { SafeAreaView, StyleSheet, View, Text, Image } from 'react-native'
+import { SafeAreaView, StyleSheet, ScrollView, Text, Image, Dimensions } from 'react-native'
 import {callGoogleVIsionApi} from '../../helper/textDetection'
 import {colors} from '../../style/style'
 
@@ -20,9 +20,11 @@ const FsView = ({ route }) => {
     },[])
     return (
         <SafeAreaView style={styles.container}>
-            <Image style={styles.image} source={{uri:uri}} /> 
-            <Text style={styles.heading}>Results :</Text>
-            <Text style={styles.extracted}>{loadingExtract? "...loading" : extract}</Text>
+            <ScrollView style={styles.ScrollView}>
+                <Image style={styles.image} source={{uri:uri}} resizeMode='contain' /> 
+                <Text style={styles.heading}>Results :</Text>
+                <Text style={styles.extracted}>{loadingExtract? "...loading" : extract}</Text>
+            </ScrollView>
         </SafeAreaView>
     )
 }
@@ -34,17 +36,24 @@ const styles = StyleSheet.create({
         marginTop: 50,
         marginBottom:50
     },
+    ScrollView : {
+        margin:0,
+        padding: 0
+    },
     image: {
-        width: 200,
-        height: 200,
-        marginBottom: 30
+        width: Dimensions.get('window').width, 
+        height: Dimensions.get('window').height/2,
+        marginBottom: 20
     }, 
     heading : {
         fontSize: 25,
         color: colors.textColorHighlight,
-        marginBottom: 20
+        marginBottom: 20,
+        marginHorizontal: 20,
     },
-    extracted : {}
+    extracted : {
+        marginHorizontal: 20,
+    }
 });
 
 export default FsView
